@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Item</title>
+  </head>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:"courgette";
+}
+body {
+  font-family: "Montserrat";
+  font-weight: 500;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(27, 35, 49);}
+
+form {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.form-container {
+  padding: 16px;
+  border: 2px solid #71ffff;
+  background: #000000;
+  color: white;
+  border-radius: 30px;
+  width: 60%;
+  margin: 30px auto;
+  box-shadow: 0px 0px 30px #71ffff;
+}
+
+.form-container h1 {
+  margin: 16px auto 32px;
+  text-align: center;
+  color: #71ffff;
+}
+.form-container label {
+  color: #71ffff;
+}
+form div {
+  width: 100%;
+  padding: 16px;
+}
+form div h4 {
+  text-overflow: ellipsis;
+}
+input {
+  display: inline-block;
+  width: 100%;
+  height: 8vh;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #1a2224;
+  border: none;
+  outline: none;
+  color: white;
+  caret-color: #71ffff;
+  border-radius: 5px;
+}
+
+textarea {
+  display: inline-block;
+  width: 100%;
+  height: 14vh;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #1a2224;
+  border: none;
+  outline: none;
+  color: white;
+  caret-color: #71ffff;
+  border-radius: 5px;
+}
+
+input:focus,textarea:focus {
+  border: 2px solid #71ffff;
+}
+#category-info,
+#amount-info,
+#description-info {
+  color: rgb(230, 111, 111);
+  margin: 10px auto;
+  text-align: center;
+}
+#status {
+  margin: 10px auto;
+  text-align: center;
+}
+::placeholder {
+  color: #bbb;
+}
+button {
+  border: none;
+  outline: none;
+  padding: 16px 32px;
+  margin: auto;
+  border-radius: 8px;
+  background: #71ffff;
+  color: #0f1719;
+  font-weight: bolder;
+  font-size: 18px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0px 0px 30px #71ffff;
+  background-color: black;
+  color: #71ffff;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(245, 224, 255);
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: rgb(69, 32, 71);
+  color: white;
+  box-shadow:0px 0px 20px rgb(69, 32, 71);
+}
+
+li a:hover:not(.active) {
+  background-color: white;
+  color: rgb(69, 32, 71);
+}
+.mynavbar{
+  overflow: hidden;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-image:linear-gradient(to right,rgb(69, 32, 71),rgb(245, 224, 255), rgb(69, 32, 71));
+  color: rgb(69, 32, 71);
+  animation-name: example;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  align-items: center;
+  text-align: center;
+}
+  </style>
+  <body>
+    <h2 class="mynavbar" >Hi there! Welcome <i class="fa fa-handshake-o" aria-hidden="true"></i></h2>
+    <ul>
+      <li><a href="./userdetails.html"><i class="fa fa-user-plus"></i> User</a></li>
+      <li><a href="./expensedetails.html"><i class="fa fa-money"></i> Expense</a></li>
+      <li><a class="active" href="./expenseitem.html"><i class="fa fa-list-ol"></i> Expense Item</a></li>
+    </ul>
+
+    <div class="container" style="margin-left:25%;">
+      <div class="form-container">
+        <h1>Expense Item</h1>
+        <h3 id="status"></h3>
+        <form id="form">
+          
+        <div class="category-container">
+            <label for="category">Category</label>
+            <input 
+                name = "category" 
+                id = "category"
+                list="categorylist"
+                onkeyup="validateCategory()"
+                placeholder="Enter your category"
+                required>
+            <datalist id = "categorylist">
+                <option>Air Travel Expense</option>
+                <option>Automobile Expense</option>
+                <option>Fuel/Mileage Expense</option>
+                <option>IT and Internet Expense</option>
+                <option>Labor</option>
+                <option>Lodging</option>
+                <option>Meals and Entertainment</option>
+                <option>Foods</option>
+                <option>Parking</option>
+                <option>Per Diem</option>
+                <option>Telephone Expense</option>
+                <option>Materials</option>
+                <option>Other Expenses</option>
+            </datalist>
+            <h4 id="category-info"></h4>
+          </div>
+
+          <div class="amount">
+            <label for="amount">Amount</label>
+            <input
+              type="number"
+              id="amount"
+              onkeyup="validateAmount()"
+              placeholder="Enter the amount"
+              required
+            />
+            <h4 id="amount-info"></h4>
+          </div>
+
+          <div class="description-field-container">
+            <label for="description">Description</label>
+            <textarea id = "description" onkeyup="validateDescription()" rows="4" cols="50" name="description" id="description" 
+            placeholder="Enter description" required></textarea>
+            <h4 id="description-info"></h4>
+          </div>
+
+          <div style="text-align: center">
+            <button>Submit</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+    const categoryField = document.getElementById("category");
+    const categoryInfo = document.getElementById("category-info");
+    const amountField = document.getElementById("amount");
+    const amountInfo = document.getElementById("amount-info");
+    const descriptionField = document.getElementById("description");
+    const descriptionInfo = document.getElementById("description-info");
+
+const form = document.getElementById("form");
+let error = 0;
+
+function validateCategory() {
+  
+  if (categoryField.value == "") {
+    categoryInfo.textContent = "This field is required";
+    error = 1;
+  }
+  else{
+    categoryInfo.textContent = "";
+    error=0;
+  }
+}
+
+function validateAmount() {
+  
+  if (amountField.value == "") {
+    amountInfo.textContent = "This field is required";
+    error = 1;
+  }
+  else{
+    amountInfo.textContent = "";
+    error=0;
+  }
+}
+
+function validateDescription() {
+  
+  if (descriptionField.value == "") {
+    descriptionInfo.textContent = "This field is required";
+    error = 1;
+  }
+  else{
+    descriptionInfo.textContent = "";
+    error=0;
+  }
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (error) {
+    document.getElementById("status").textContent = "Your expense cannot be Submitted";
+    document.getElementById("status").style.color = "red";
+  } else {
+    document.getElementById("status").textContent =
+      "Your Expense is Submitted Successfully!";
+    document.getElementById("status").style.color = "#02f29b";
+  }
+});
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>User Details</title>
+  </head>
+  <style>
+      * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:"courgette";
+}
+body {
+  font-family: "Montserrat";
+  font-weight: 500;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-image: url(https://static.vecteezy.com/system/resources/previews/001/845/998/original/abstract-black-and-gold-polygonal-background-free-vector.jpg);
+}
+
+form {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.form-container {
+  padding: 16px;
+  border: 2px solid yellow;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+  width: 60%;
+  margin: 30px auto;
+  box-shadow: 0px 0px 30px yellow;
+}
+
+.form-container h1 {
+  margin: 16px auto 32px;
+  text-align: center;
+  color: yellow;
+}
+.form-container label {
+  color: yellow;
+}
+form div {
+  width: 100%;
+  padding: 16px;
+}
+form div h4 {
+  text-overflow: ellipsis;
+}
+input {
+  display: inline-block;
+  width: 100%;
+  height: 8vh;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #1a2224;
+  border: none;
+  outline: none;
+  color: white;
+  caret-color: yellow;
+  border-radius: 5px;
+}
+input:focus {
+  display: inline-block;
+  width: 100%;
+  height: 8vh;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  caret-color: yellow;
+  border-radius: 5px;
+  border-bottom: 5px solid yellow;
+}
+
+#email-info
+ {
+  color: rgb(255, 128, 128);
+  margin: 10px auto;
+  text-align: center;
+}
+#status {
+  margin: 10px auto;
+  text-align: center;
+}
+::placeholder {
+  color: #bbb;
+}
+button {
+  border: none;
+  outline: none;
+  padding: 16px 32px;
+  margin: auto;
+  border-radius: 8px;
+  background: yellow;
+  color: #0f1719;
+  font-weight: bolder;
+  font-size: 18px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:hover {
+background:black;
+  box-shadow: 0px 0px 50px yellow;
+  color: yellow;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(245, 224, 255);
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: rgb(69, 32, 71);
+  color: white;
+  box-shadow:0px 0px 20px rgb(69, 32, 71);
+}
+
+li a:hover:not(.active) {
+  background-color: white;
+  color: rgb(69, 32, 71);
+}
+.mynavbar{
+  overflow: hidden;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-image:linear-gradient(to right,rgb(69, 32, 71),rgb(245, 224, 255), rgb(69, 32, 71));
+  color: rgb(69, 32, 71);
+  animation-name: example;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  align-items: center;
+  text-align: center;
+}
+
+  </style>
+  <body>
+    <h2 class="mynavbar" >Hi there! Welcome <i class="fa fa-handshake-o" aria-hidden="true"></i></h2>
+    <ul>
+      <li><a class="active" href="./index.html"><i class="fa fa-user-plus"></i> User</a></li>
+      <li><a href="./expense.html"><i class="fa fa-money"></i> Expense</a></li>
+      <li><a href="./expenseitem.html"><i class="fa fa-list-ol"></i> Expense Item</a></li>
+    </ul>
+    <div class="container" style="margin-left:25%;">
+      <div class="form-container">
+        <h1>Login</h1>
+        <h3 id="status"></h3>
+        <form id="form" action="./displayusers.html" method="post" >
+          <div class="name-field-container">
+          <div class="email-field-container">
+            <label for="email">Email ID</label>
+            <input
+              type="email"
+              placeholder="Enter your Email Id"
+              id="email"
+              onkeyup="validateEmail()"
+              required
+              autocomplete="off"
+            />
+            <h4 id="email-info"></h4>
+          </div>
+
+          
+          <div style="text-align: center">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </div>
+          <div style="text-align: center">
+              New user ? <a style="color: lightskyblue;" href="./userdetails.html">Register here</a>
+          </div>
+          
+        </form>
+        
+      </div>
+    </div>
+    
+    <script>
+        const emailField = document.getElementById("email");
+        const emailInfo = document.getElementById("email-info");
+        const mobileInfo = document.getElementById("mobile-info");
+
+        const form = document.getElementById("form");
+        
+let error = 0;
+
+function validateEmail() {
+  const pattern = /\S+@\S+\.\S+/;
+
+  if (emailField.value == "") {
+    emailInfo.textContent = "This field is required";
+    error = 1;
+  } else if (pattern.test(emailField.value)) {
+    emailInfo.textContent = "";
+    error = 0;
+  } else {
+    emailInfo.textContent = "Email is Invalid! Please enter your Email Id in abc@xyz.com format";
+    error = 1;
+  }
+}
+
+form.addEventListener("submit", function (e) {
+  if (error) {
+    document.getElementById("status").textContent = "Your expense cannot be Submitted";
+    document.getElementById("status").style.color = "red";
+    e.preventDefault();
+  } else {
+    document.getElementById("status").textContent =
+      "Your have Registered Successfully!";
+    document.getElementById("status").style.color = "#02f29b";
+  }
+});
+    </script>
+  </body>
+</html>

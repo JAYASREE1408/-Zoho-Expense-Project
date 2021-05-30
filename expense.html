@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <title>Expense</title>
+  </head>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:"courgette";
+}
+body {
+  font-weight: 500;
+  font-family:"courgette";
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a2224;
+}
+
+form {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.form-container {
+  padding: 16px;
+  background: #ffffff;
+  color: white;
+  width: 60%;
+  margin: 30px auto;
+  box-shadow: 0px 0px 10px #fdfdfd;
+}
+
+.form-container h1 {
+  margin: 16px auto 32px;
+  text-align: center;
+  color: #52004e;
+}
+.form-container label {
+  color: #52004e;
+}
+form div {
+  width: 100%;
+  padding: 16px;
+}
+form div h4 {
+  text-overflow: ellipsis;
+}
+input {
+  display: inline-block;
+  width: 100%;
+  height: 8vh;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #ffffff00;
+  border: none;
+  outline: none;
+  color:black;
+  caret-color: #52004e;
+  border-radius: 5px;
+  border-bottom: 5px solid #52004e;
+}
+
+textarea {
+  display: inline-block;
+  width: 100%;
+  height: 14vh;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #ffffff00;
+  border: none;
+  outline: none;
+  color:black;
+  caret-color: #52004e;
+  border-radius: 5px;
+  border: 3px solid #52004e;
+}
+
+input:focus {
+  background-image:linear-gradient(to right,#ff00b3,rgb(192, 237, 255));
+  border: 2px solid #52004e;
+  color: white;
+}
+
+textarea:focus {
+  background-image:linear-gradient(to right,#ff00b3,rgb(192, 237, 255));
+  border: 2px solid #52004e;
+  color: white;
+}
+
+#name-info,
+#dob-info,
+#ref-info,
+#currency-info,
+#category-info,
+#amount-info,
+#description-info {
+  color: rgb(255, 27, 27);
+  margin: 10px auto;
+  text-align: center;
+}
+#status {
+  margin: 10px auto;
+  text-align: center;
+}
+::placeholder {
+  color: #bbb;
+}
+button {
+  border: none;
+  outline: none;
+  padding: 16px 32px;
+  margin: auto;
+  border-radius: 8px;
+  background-image:linear-gradient(to right,#ff00b3,rgb(192, 237, 255));
+  color: #0f1719;
+  font-weight: bolder;
+  font-size: 18px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: 0px 0px 30px #52004e;
+  background-image:linear-gradient(to right,rgb(192, 237, 255),#ff00b3);
+  color: #000000;
+}
+
+.box{
+  border: none;
+  outline: none;
+  padding: 30px 30px;
+  border-radius:0px 28px 0px 28px;
+  box-shadow: 0px 0px 40px #52004e;
+  background-image:linear-gradient(to right,#ff00b3,rgb(192, 237, 255));
+  color: #0f1719;
+  font-weight: bolder;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(245, 224, 255);
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: rgb(69, 32, 71);
+  color: white;
+  box-shadow:0px 0px 20px rgb(69, 32, 71);
+}
+
+li a:hover:not(.active) {
+  background-color: white;
+  color: rgb(69, 32, 71);
+}
+.mynavbar{
+  overflow: hidden;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-image:linear-gradient(to right,rgb(69, 32, 71),rgb(245, 224, 255), rgb(69, 32, 71));
+  color: rgb(69, 32, 71);
+  animation-name: example;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  align-items: center;
+  text-align: center;
+}
+/* 
+@keyframes example {
+  0%   { background:rgb(69, 32, 71);color: white;}
+  100%   {  background:white;color: black;}
+
+} */
+  </style>
+  <body>
+    <h2 class="mynavbar" >Hi there! Welcome <i class="fa fa-handshake-o" aria-hidden="true"></i></h2>
+
+    <ul>
+      <li><a href="./index.html"><i class="fa fa-user-plus"></i> User</a></li>
+      <li><a class="active" href="./expense.html"><i class="fa fa-money"></i> Expense</a></li>
+      <li><a href="./expenseitem.html"><i class="fa fa-list-ol"></i> Expense Item</a></li>
+    </ul>
+
+    <div class="container" style="margin-left:25%;">
+        <a href="./expensedetails.html"><button><i class="fa fa-plus" ></i> New Expense</button></a>
+     </div>
+  </body>
+</html>

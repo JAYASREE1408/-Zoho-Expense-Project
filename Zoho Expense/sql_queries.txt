@@ -1,0 +1,7 @@
+select (select code from currency where id = cid) as currency,(select name from merchant where id = mid) as merchant,(select date from expense where id = eid) as date,(select date from expense where id = eid) as date,(select total from expense where id = eid) as total,(select refno from expense where id = eid) as refno from ex_cy_me where eid in (select id from expense where uid=14);
+
+
+
+
+
+select t2.*,t1.* from (select * from expense where uid = 14) t2 left join (select eid,(select code from currency where id = cid) as currency,(select name from merchant where id = mid) as merchant from ex_cy_me where eid in (select id from expense where uid=14)) t1 on t1.eid = t2.id;
